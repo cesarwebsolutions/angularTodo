@@ -23,8 +23,9 @@ export class ReadAllComponent implements OnInit {
   }
 
   findAll(): void {
-    this.service.findAllService().subscribe((resposta) => {
-      resposta.forEach(todo => {
+    this.service.findAllService().subscribe((resp) => {
+      // this.list = resp;
+      resp.forEach(todo => {
         if(todo.finalizado) {
           this.listFinished.push(todo);
         } else {
@@ -35,9 +36,10 @@ export class ReadAllComponent implements OnInit {
     })
   }
 
+
   finalizar(item: Todo): void {
     item.finalizado = true;
-    this.service.updateService(item).subscribe((resposta) => {
+    this.service.finalizarService(item).subscribe((resposta) => {
       this.service.message('Task finalizada com sucesso!');
       this.list = this.list.filter(todo => todo.id !== item.id);
       this.closed++;

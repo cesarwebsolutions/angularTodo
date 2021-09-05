@@ -20,12 +20,17 @@ export class TodoService {
   }
 
   findByIdService(id: any): Observable<Todo> {
-    const url = `${this.baseUrl}/${id}`
+    const url = `${this.baseUrl}/update/${id}`
     return this.http.get<Todo>(url);
   }
 
-  updateService(todo: Todo): Observable<Todo>{
+  finalizarService(todo: Todo): Observable<Todo>{
     const url = `${this.baseUrl}/${todo.id}`
+    return this.http.put<Todo>(url, todo);
+  }
+
+  updateService(todo: Todo): Observable<Todo>{
+    const url = `${this.baseUrl}/atualizar/${todo.id}`
     return this.http.put<Todo>(url, todo);
   }
 
@@ -35,7 +40,9 @@ export class TodoService {
   }
 
   createService(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(this.baseUrl, todo);
+    const url = `${this.baseUrl}/cadastro`
+    return this.http.post<Todo>(url, todo);
+    // return this.http.post<Todo>(this.baseUrl, todo);
   }
 
   message(msg: string): void {

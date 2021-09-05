@@ -2,6 +2,7 @@ import { Todo } from './../../models/todo';
 import { TodoService } from './../../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-update',
@@ -18,7 +19,6 @@ export class UpdateComponent implements OnInit {
   todo: Todo = {
     titulo: '',
     descricao: '',
-    dataParaFInalizar: new Date(),
     finalizado: false
   }
 
@@ -28,7 +28,7 @@ export class UpdateComponent implements OnInit {
   }
 
   findById(): void {
-    this.servie.findByIdService(this.todo.id).subscribe((resposta) => {
+    this.servie.findByIdService(this.todo.id).subscribe(resposta => {
       this.todo = resposta;
     })
   }
