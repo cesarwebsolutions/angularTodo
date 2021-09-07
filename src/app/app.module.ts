@@ -1,3 +1,4 @@
+import { httpInterceptorsProviders } from './http-interceptors/index';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,6 +24,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateComponent } from './components/update/update.component';
 import { CreateDoisComponent } from './create-dois/create-dois.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { HomeComponent } from './components/home/home.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,11 @@ import { CreateDoisComponent } from './create-dois/create-dois.component';
     FinalizadosComponent,
     CreateComponent,
     UpdateComponent,
-    CreateDoisComponent
+    CreateDoisComponent,
+    LoginComponent,
+    AuthenticationComponent,
+    HomeComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,9 @@ import { CreateDoisComponent } from './create-dois/create-dois.component';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorsProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
